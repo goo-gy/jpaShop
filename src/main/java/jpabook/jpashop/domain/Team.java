@@ -10,11 +10,9 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-public class OrderItem {
-    @Id @GeneratedValue
-    private Long id;
-    private Long orderId;
-    private Long itemId;
-    private int orderPrice;
-    private int count;
+public class Team {
+    @Id
+    @GeneratedValue
+    private Long teamId;
+    private String name;
 }

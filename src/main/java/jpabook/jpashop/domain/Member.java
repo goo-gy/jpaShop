@@ -3,9 +3,7 @@ package jpabook.jpashop.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -14,6 +12,8 @@ public class Member {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    private String street;
-    private String zipcode;
+
+    @ManyToOne
+    @JoinColumn(name="team_id")
+    private Team team;
 }
