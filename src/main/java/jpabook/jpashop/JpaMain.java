@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -27,10 +28,14 @@ public class JpaMain {
             member.setTeam(team);
             em.persist(member);
 
+            em.flush(); // commit 전에 db로 보내도록
+            em.clear(); // cache 된게 아니라 DB에서 다시 가져오도록
             Member findMember = em.find(Member.class, member.getId());
             Team findTeam = findMember.getTeam();
-            System.out.println("Find Team:" + findTeam.getName());
-
+            List<Member> members = findTeam.getMembers();
+            for(Member teamMember : members) {
+                System.out.println("======" + teamMember.getName());
+            }
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
