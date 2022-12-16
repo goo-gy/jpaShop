@@ -16,7 +16,7 @@ import java.util.List;
 public class Team {
     @Id
     @GeneratedValue
-    private Long teamId;
+    private Long id;
     private String name;
 
     @OneToMany(mappedBy = "team")

@@ -9,11 +9,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Member {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="team_id")
+    @JoinColumn(name = "team_id")
     private Team team;
+
+    @OneToOne
+    @JoinColumn(name = "locker_id")
+    private Locker locker;
 }
