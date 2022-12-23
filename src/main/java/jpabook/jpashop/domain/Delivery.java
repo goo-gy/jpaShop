@@ -6,16 +6,20 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 @Getter
 @Setter
-public class Member {
+public class Delivery {
     @Id
     @GeneratedValue
-    private Long id;
-    private String name;
+    private Long deliveryId;
     private String city;
     private String street;
     private String zipCode;
+    private Status status;
+
+    @OneToOne(mappedBy = "delivery")
+    private Order order;
 }
